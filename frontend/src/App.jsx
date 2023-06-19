@@ -1,17 +1,18 @@
 import React from 'react';
-import PhotoList from './components/PhotoList'; // Import the PhotoList component
 
-// import PhotoListItem from './components/PhotoListItem';
+import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
+import PhotoList from "./components/PhotoList";
+import TopicList from "./components/TopicList";
+import HomeRoute from "./routes/HomeRoute";
 
 // Note: Rendering a single component to build components in isolation
-
-// const photos = new Array(3).fill({}); // creates an array with 3 empty objects
-
 const App = () => (
   <div className="App">
-    <PhotoList /> {/* Render the PhotoList component */}
+    {/*<PhotoList/>*/}
+    {/*  <TopicList/>*/}
+      <HomeRoute/>
   </div>
-);
+)
 
-export default App;
+export default App
