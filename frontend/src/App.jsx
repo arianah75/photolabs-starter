@@ -1,18 +1,47 @@
 import React from 'react';
+import useApplicationData from './hooks/useApplicationData';
+
 
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
-import PhotoList from "./components/PhotoList";
-import TopicList from "./components/TopicList";
-import HomeRoute from "./routes/HomeRoute";
+import HomeRoute from './routes/HomeRoute';
+import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
-// Note: Rendering a single component to build components in isolation
-const App = () => (
-  <div className="App">
-    {/*<PhotoList/>*/}
-    {/*  <TopicList/>*/}
-      <HomeRoute/>
-  </div>
-)
+//state logic from useApplicationData
+const App = () => {
+  const { photoData,
+    topicData,
+    likedPhotoArray,
+    displayModal,
+    modalData,
+    onClickLikes,
+    onClickModal,
+    setDisplayModal,
+    onLoadTopic } = useApplicationData();
 
-export default App
+
+  //rendering Homeroute and Modal route
+  return (
+    < div className="App" >
+      <HomeRoute
+        topicData={topicData}
+        photoData={photoData}
+        onClickModal={onClickModal}
+        onClickLikes={onClickLikes}
+        likedPhotoArray={likedPhotoArray}
+        onLoadTopic={onLoadTopic} />
+      {displayModal &&
+        (<PhotoDetailsModal
+          photoData={photoData}
+          onClose={() => setDisplayModal(false)}
+          modalData={modalData}
+          onClickModal={onClickModal}
+          onClickLikes={onClickLikes}
+          likedPhotoArray={likedPhotoArray}
+        />
+        )}
+    </div >
+  );
+};
+
+export default App;
