@@ -1,15 +1,14 @@
 import React from 'react';
 import useApplicationData from './hooks/useApplicationData';
 
-
-import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 
 //state logic from useApplicationData
 const App = () => {
-  const { photoData,
+  const {
+    photoData,
     topicData,
     likedPhotoArray,
     displayModal,
@@ -17,21 +16,22 @@ const App = () => {
     onClickLikes,
     onClickModal,
     setDisplayModal,
-    onLoadTopic } = useApplicationData();
-
+    onLoadTopic,
+  } = useApplicationData();
 
   //rendering Homeroute and Modal route
   return (
-    < div className="App" >
+    <div className="App">
       <HomeRoute
         topicData={topicData}
         photoData={photoData}
         onClickModal={onClickModal}
         onClickLikes={onClickLikes}
         likedPhotoArray={likedPhotoArray}
-        onLoadTopic={onLoadTopic} />
-      {displayModal &&
-        (<PhotoDetailsModal
+        onLoadTopic={onLoadTopic}
+      />
+      {displayModal && (
+        <PhotoDetailsModal
           photoData={photoData}
           onClose={() => setDisplayModal(false)}
           modalData={modalData}
@@ -39,8 +39,8 @@ const App = () => {
           onClickLikes={onClickLikes}
           likedPhotoArray={likedPhotoArray}
         />
-        )}
-    </div >
+      )}
+    </div>
   );
 };
 
