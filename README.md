@@ -32,5 +32,6 @@ npm start
 
 ## Final Product
 
-!["Screenshot of Home Page"]()
-!["Screenshot of Category Page"]()
+!["Screenshot of Home Page"](https://github.com/arianah75/photolabs-starter/blob/main/docs/photolab/home-screen.PNG?raw=true)
+!["Screenshot of Category Page"](https://github.com/arianah75/photolabs-starter/blob/main/docs/photolab/liked-animal.PNG?raw=true)
+!["Screenshot of Picture"](https://github.com/arianah75/photolabs-starter/blob/main/docs/photolab/magnified-drink.PNG?raw=true)
