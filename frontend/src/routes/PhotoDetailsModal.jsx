@@ -5,15 +5,21 @@ import '../styles/PhotoDetailsModal.scss';
 import PhotoList from '../components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
+  const {
+    likedPhotoArray,
+    modalData,
+    onClose,
+    onClickLikes,
+    photoData,
+    onClickModal,
+  } = props;
+
   //liked variable to pass in likes information from homeroute
-  const liked = props.likedPhotoArray.includes(props.modalData.id);
+  const liked = likedPhotoArray.includes(modalData.id);
 
   return (
     <div className="photo-details-modal">
-      <button
-        className="photo-details-modal--close-button"
-        onClick={props.onClose}
-      >
+      <button className="photo-details-modal--close-button" onClick={onClose}>
         <svg
           width="24"
           height="24"
@@ -43,25 +49,25 @@ const PhotoDetailsModal = (props) => {
         </svg>
       </button>
 
-      <div className="photo-details-modal--images" key={props.modalData.id}>
+      <div className="photo-details-modal--images" key={modalData.id}>
         <PhotoFavButton
-          photoId={props.modalData.id}
-          onClickLikes={props.onClickLikes}
+          photoId={modalData.id}
+          onClickLikes={onClickLikes}
           liked={liked}
         />
         <img
           className="photo-details-modal--image"
-          src={props.modalData.urls.regular}
+          src={modalData.urls.regular}
         />
-        <h2>{props.modalData.user.name}</h2>
+        <h2>{modalData.user.name}</h2>
         <hr className="photo-details-modal-line" />
 
         <header className="photo-details-modal--header">Similar Photos</header>
         <PhotoList
-          photoData={props.photoData}
-          onClickLikes={props.onClickLikes}
-          likedPhotoArray={props.likedPhotoArray}
-          onClickModal={props.onClickModal}
+          photoData={modalData.similar_photos}
+          onClickLikes={onClickLikes}
+          likedPhotoArray={likedPhotoArray}
+          onClickModal={onClickModal}
         />
       </div>
     </div>
